@@ -1,6 +1,7 @@
 package com.stackroute.controller;
 
 import com.stackroute.domain.User;
+import com.stackroute.exceptions.UserAlreadyExistsException;
 import com.stackroute.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class UserController {
         try {
             userService.saveUser(user);
             responseEntity = new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
-        } catch (Exception exception) {
+        } catch (UserAlreadyExistsException exception) {
             responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
