@@ -1,5 +1,6 @@
 package com.stackroute.service;
 
+import com.stackroute.MuzixApplication;
 import com.stackroute.domain.User;
 import com.stackroute.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,11 @@ public class UserServiceImpl implements UserService {
 
         userRepository.delete(userOptional.get());
         return true;
+    }
+
+    @Override
+    public List<MuzixApplication> userByName(String name) {
+        return userRepository.userByName(name);
     }
 }
 

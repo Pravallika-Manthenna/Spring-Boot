@@ -65,5 +65,17 @@ public class UserController {
         }
         return responseEntity;
     }
+
+    @GetMapping("userByName")
+    public ResponseEntity<?> userByName(@RequestBody String name) {
+        ResponseEntity responseEntity;
+        try {
+            userService.userByName(name);
+            responseEntity = new ResponseEntity<String>("user by name", HttpStatus.OK);
+        } catch (Exception exception) {
+            responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
 }
 
