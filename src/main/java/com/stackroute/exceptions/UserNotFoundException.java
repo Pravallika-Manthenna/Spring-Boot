@@ -1,6 +1,6 @@
 package com.stackroute.exceptions;
 
-public class UserNotFoundException extends Throwable {
+public class UserNotFoundException extends Exception {
 
     private String message;
 

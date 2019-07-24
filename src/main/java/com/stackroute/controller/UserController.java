@@ -22,62 +22,35 @@ public class UserController {
     }
 
     @PostMapping("user")
-    public ResponseEntity<?> saveUser(@RequestBody User user) {
-        ResponseEntity responseEntity;
-        try {
-            userService.saveUser(user);
-            responseEntity = new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
-        } catch (UserAlreadyExistsException exception) {
-            responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
-        }
-        return responseEntity;
+    public ResponseEntity<?> saveUser(@RequestBody User user) throws UserAlreadyExistsException {
+        userService.saveUser(user);
+        return new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
     }
 
     @GetMapping("user")
     public ResponseEntity<?> getAllUsers() {
-        ResponseEntity responseEntity;
-        try {
-            userService.getAllUsers();
-            responseEntity = new ResponseEntity<List<User>>(userService.getAllUsers(), HttpStatus.OK);
-        } catch (Exception exception1) {
-            responseEntity = new ResponseEntity<String>(exception1.getMessage(), HttpStatus.CONFLICT);
-        }
-        return responseEntity;
+
+        userService.getAllUsers();
+        return new ResponseEntity<List<User>>(userService.getAllUsers(), HttpStatus.OK);
     }
 
     @PutMapping("user/{id}")
-    public ResponseEntity<?> updateUser(@RequestBody User user,@PathVariable int id) {
-        ResponseEntity responseEntity;
-        try {
-            userService.updateUser(user,id);
-            responseEntity = new ResponseEntity<List<User>>(userService.getAllUsers(), HttpStatus.CREATED);
-        } catch (Exception exception1) {
-            responseEntity = new ResponseEntity<String>(exception1.getMessage(), HttpStatus.CONFLICT);
-        }
-        return responseEntity;
+    public ResponseEntity<?> updateUser(@RequestBody User user, @PathVariable int id) throws UserAlreadyExistsException {
+        userService.updateUser(user, id);
+        return new ResponseEntity<List<User>>(userService.getAllUsers(), HttpStatus.CREATED);
     }
+
     @DeleteMapping("user/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable int id) throws UserNotFoundException {
-        ResponseEntity responseEntity;
-        try {
-            userService.deleteuser(id);
-            responseEntity = new ResponseEntity<String>("Successfully deleted", HttpStatus.OK);
-        } catch (UserNotFoundException exception) {
-            responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
-        }
-        return responseEntity;
+        userService.deleteuser(id);
+        return new ResponseEntity<String>("Successfully deleted", HttpStatus.OK);
     }
 
     @GetMapping("userByName")
-    public ResponseEntity<?> userByName(@RequestBody String name) {
-        ResponseEntity responseEntity;
-        try {
-            userService.userByName(name);
-            responseEntity = new ResponseEntity<String>("user by name", HttpStatus.OK);
-        } catch (Exception exception) {
-            responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
-        }
-        return responseEntity;
+    public ResponseEntity<?> userByName(@RequestBody String name) throws UserNotFoundException {
+
+        userService.userByName(name);
+        return new ResponseEntity<String>("user by name", HttpStatus.OK);
     }
 }
 

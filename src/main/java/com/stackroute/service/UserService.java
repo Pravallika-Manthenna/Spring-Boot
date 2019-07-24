@@ -11,7 +11,7 @@ public interface UserService {
 
     public User saveUser(User user) throws UserAlreadyExistsException;
     public List<User> getAllUsers();
-    public User updateUser(User user,int id) throws Exception;
+    public User updateUser(User user,int id) throws UserAlreadyExistsException;
     public boolean deleteuser(int id)throws UserNotFoundException;
     public List<MuzixApplication> userByName(String name);
 }

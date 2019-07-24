@@ -43,11 +43,11 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public User updateUser(User user, int id) throws Exception {
+    public User updateUser(User user, int id) throws UserAlreadyExistsException {
         Optional<User> userOptional = userRepository.findById(id);
 
         if (!userOptional.isPresent())
-            throw new Exception("user id not found");
+            throw new UserAlreadyExistsException("user id not found");
 
 
         user.setId(id);
