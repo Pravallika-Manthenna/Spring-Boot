@@ -11,7 +11,4 @@ public class UserAlreadyExistsException extends Exception {
         this.message = message;
     }
 
-    public class UserNotFoundException extends Exception{
-
-    }
 }

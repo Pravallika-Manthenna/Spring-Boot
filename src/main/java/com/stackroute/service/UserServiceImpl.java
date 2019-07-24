@@ -3,6 +3,7 @@ package com.stackroute.service;
 import com.stackroute.MuzixApplication;
 import com.stackroute.domain.User;
 import com.stackroute.exceptions.UserAlreadyExistsException;
+import com.stackroute.exceptions.UserNotFoundException;
 import com.stackroute.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,11 +57,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean deleteuser( int id) throws Exception {
+    public boolean deleteuser( int id) throws UserNotFoundException {
         Optional<User> userOptional = userRepository.findById(id);
 
         if (!userOptional.isPresent())
-            throw new Exception("user id not found");
+            throw new UserNotFoundException("user id not found");
 
         userRepository.delete(userOptional.get());
         return true;

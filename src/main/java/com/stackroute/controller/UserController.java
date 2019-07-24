@@ -2,6 +2,7 @@ package com.stackroute.controller;
 
 import com.stackroute.domain.User;
 import com.stackroute.exceptions.UserAlreadyExistsException;
+import com.stackroute.exceptions.UserNotFoundException;
 import com.stackroute.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -56,12 +57,12 @@ public class UserController {
         return responseEntity;
     }
     @DeleteMapping("user/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable int id) {
+    public ResponseEntity<?> deleteUser(@PathVariable int id) throws UserNotFoundException {
         ResponseEntity responseEntity;
         try {
             userService.deleteuser(id);
             responseEntity = new ResponseEntity<String>("Successfully deleted", HttpStatus.OK);
-        } catch (Exception exception) {
+        } catch (UserNotFoundException exception) {
             responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
