@@ -14,20 +14,22 @@ import java.util.Optional;
 @ControllerAdvice(basePackages = "com.stackroute")
 public class UserControllerAdvice {
 
-    private ResponseEntity<VndErrors> error(final Exception exception, final HttpStatus httpStatus, final String logRef)
-    {
+//    @ExceptionHandler(value = Exception.class)
+//    public ResponseEntity<String> exceptionHandler(Exception e) {
+//        return new ResponseEntity<>("Error thrown globally : " + e.getMessage(), HttpStatus.CONFLICT);
+
+    private ResponseEntity<VndErrors> error(final Exception exception, final HttpStatus httpStatus, final String logRef) {
         final String message = Optional.of(exception.getMessage()).orElse(exception.getClass().getSimpleName());
         return new ResponseEntity<>(new VndErrors(logRef, message), httpStatus);
     }
 
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity <VndErrors> notFoundException(final UserNotFoundException e)
-    {
+    public ResponseEntity<VndErrors> notFoundException(final UserNotFoundException e) {
         return error(e, HttpStatus.NOT_FOUND, e.getMessage());
     }
 
     @ExceptionHandler(UserAlreadyExistsException.class)
-    public ResponseEntity <VndErrors> alreadyExistsException(final UserAlreadyExistsException e) {
+    public ResponseEntity<VndErrors> alreadyExistsException(final UserAlreadyExistsException e) {
         return error(e, HttpStatus.CONFLICT, e.getLocalizedMessage());
     }
 }

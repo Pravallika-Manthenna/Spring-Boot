@@ -27,10 +27,11 @@ public class UserController {
         return new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
     }
 
-    @GetMapping("user")
+    @GetMapping("user1")
     public ResponseEntity<?> getAllUsers() {
 
         userService.getAllUsers();
+        System.out.println("entered into get all users");
         return new ResponseEntity<List<User>>(userService.getAllUsers(), HttpStatus.OK);
     }
 
@@ -51,6 +52,7 @@ public class UserController {
 
         userService.userByName(name);
         return new ResponseEntity<String>("user by name", HttpStatus.OK);
+
     }
 }
 

@@ -6,6 +6,11 @@ import com.stackroute.exceptions.UserAlreadyExistsException;
 import com.stackroute.exceptions.UserNotFoundException;
 import com.stackroute.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +18,21 @@ import java.util.Optional;
 
 
 @Service
-public class UserServiceImpl implements UserService {
+@PropertySource("application.properties")
+public class UserServiceImpl implements UserService , ApplicationListener<ContextRefreshedEvent>, CommandLineRunner {
+
+    @Value("${user.1.firstName:default}")
+    String firstName1;
+    @Value("${user.1.lastName:default}")
+    String lastName1;
+    @Value("${user.1.age:default}")
+    int age1;
+    @Value("${user.2.firstName:default}")
+    String firstName2;
+    @Value("${user.2.lastName:default}")
+    String lastName2;
+    @Value("${user.2.age:default}")
+    int age2;
 
     UserRepository userRepository;
 
@@ -68,8 +87,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<MuzixApplication> userByName(String name) {
+    public List<MuzixApplication> userByName(String name)
+    {
         return userRepository.userByName(name);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+
+    }
+
+    @Override
+    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+
+        userRepository.save(new User(1,firstName1,lastName1,age1));
+        userRepository.save(new User(2,firstName2,lastName2,age2));
+
     }
 }
 
