@@ -59,5 +59,21 @@ public class TrackController {
         return new ResponseEntity<String>("track by name", HttpStatus.OK);
 
     }
+
+    //logic for get last fm tracks method using get method
+    @GetMapping("getLastFmTracks")
+    public ResponseEntity<?> getLastFmTracks(@RequestParam String url) throws Exception{
+        RestTemplate restTemplate = new RestTemplate();
+        String string = restTemplate.getForObject(url,String.class);
+        ObjectMapper objectMapper = new ObjectMapper();
+        Result result = objectMapper.readValue(string, Result.class);
+        List<Track> trackList = result.results.trackmatches.track;
+        List<Track> savedTrackList = new ArrayList<>();
+        for (Track track:trackList) {
+            Track track1 = trackService.saveTrack(track);
+            savedTrackList.add(track1);
+        }
+        return new ResponseEntity<>(savedTrackList,HttpStatus.OK);
+    }
 }
 
