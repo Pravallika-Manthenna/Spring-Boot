@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class WebConfig {
 
-    //bean creation
     @Bean
     ServletRegistrationBean h2servletregistration() {
         ServletRegistrationBean registrationBean = new ServletRegistrationBean(new WebServlet());
