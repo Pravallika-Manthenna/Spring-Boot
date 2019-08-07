@@ -44,13 +44,13 @@ public class TrackServiceImpl implements TrackService, ApplicationListener<Conte
     }
 
     @Override
-    public Track saveTrack(Track track) throws TrackAlreadyExistsException {
+    public Track saveTrack(Track track) throws TrackAlreadyExistsException , TrackNotSavedException {
         if(trackRepository.existsById(track.getId())){
             throw new TrackAlreadyExistsException("track Already exists");
         }
         Track savedTrack = trackRepository.save(track);
         if(savedTrack==null){
-            throw new TrackAlreadyExistsException("track already exists");
+            throw new TrackNotSavedException("track is not saved");
         }
 
         return savedTrack;
