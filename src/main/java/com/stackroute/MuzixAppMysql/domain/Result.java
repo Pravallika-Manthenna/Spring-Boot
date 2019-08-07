@@ -1,4 +1,4 @@
-package com.stackroute.domain;
+package com.stackroute.MuzixAppMysql.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

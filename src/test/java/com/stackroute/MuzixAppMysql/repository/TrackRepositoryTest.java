@@ -1,6 +1,6 @@
-package com.stackroute.repository;
+package com.stackroute.MuzixAppMysql.repository;
 
-import com.stackroute.domain.Track;
+import com.stackroute.MuzixAppMysql.domain.Track;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

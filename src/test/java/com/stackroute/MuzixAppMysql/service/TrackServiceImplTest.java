@@ -1,10 +1,10 @@
-package com.stackroute.service;
+package com.stackroute.MuzixAppMysql.service;
 
-import com.stackroute.domain.Track;
-import com.stackroute.exceptions.TrackAlreadyExistsException;
-import com.stackroute.exceptions.TrackNotFoundException;
-import com.stackroute.exceptions.TrackNotSavedException;
-import com.stackroute.repository.TrackRepository;
+import com.stackroute.MuzixAppMysql.domain.Track;
+import com.stackroute.MuzixAppMysql.exceptions.TrackAlreadyExistsException;
+import com.stackroute.MuzixAppMysql.exceptions.TrackNotFoundException;
+import com.stackroute.MuzixAppMysql.exceptions.TrackNotSavedException;
+import com.stackroute.MuzixAppMysql.repository.TrackRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

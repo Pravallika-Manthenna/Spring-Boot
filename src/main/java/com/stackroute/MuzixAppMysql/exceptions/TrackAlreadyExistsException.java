@@ -1,4 +1,4 @@
-package com.stackroute.exceptions;
+package com.stackroute.MuzixAppMysql.exceptions;
 
 //track already exists exception extending exception
 public class TrackAlreadyExistsException extends Exception {

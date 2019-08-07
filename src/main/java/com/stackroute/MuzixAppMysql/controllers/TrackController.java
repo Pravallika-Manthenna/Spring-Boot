@@ -1,12 +1,12 @@
-package com.stackroute.controllers;
+package com.stackroute.MuzixAppMysql.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stackroute.domain.Result;
-import com.stackroute.domain.Track;
-import com.stackroute.exceptions.TrackAlreadyExistsException;
-import com.stackroute.exceptions.TrackNotFoundException;
-import com.stackroute.exceptions.TrackNotSavedException;
-import com.stackroute.service.TrackService;
+import com.stackroute.MuzixAppMysql.domain.Result;
+import com.stackroute.MuzixAppMysql.domain.Track;
+import com.stackroute.MuzixAppMysql.exceptions.TrackAlreadyExistsException;
+import com.stackroute.MuzixAppMysql.exceptions.TrackNotFoundException;
+import com.stackroute.MuzixAppMysql.exceptions.TrackNotSavedException;
+import com.stackroute.MuzixAppMysql.service.TrackService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-//rest controller annotation is used which contains all the restfull operations
+//rest controller annotation is used which contains all the restfull operations 
 @RestController
 @ControllerAdvice(basePackages = "com.stackroute.muzixapp")
 public class TrackController {

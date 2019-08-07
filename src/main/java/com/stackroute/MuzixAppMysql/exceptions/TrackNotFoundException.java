@@ -1,6 +1,6 @@
-package com.stackroute.exceptions;
+package com.stackroute.MuzixAppMysql.exceptions;
 
-//track not found exception extending exception
+//track not found exception extending exception 
 public class TrackNotFoundException extends Exception {
 
     //default constructor

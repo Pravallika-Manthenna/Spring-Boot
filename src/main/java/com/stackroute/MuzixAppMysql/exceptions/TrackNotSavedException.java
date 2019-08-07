@@ -1,4 +1,4 @@
-package com.stackroute.exceptions;
+package com.stackroute.MuzixAppMysql.exceptions;
 
 public class TrackNotSavedException extends Exception{
 

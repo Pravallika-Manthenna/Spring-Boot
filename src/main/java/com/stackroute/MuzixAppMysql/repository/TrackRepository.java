@@ -1,6 +1,6 @@
-package com.stackroute.repository;
+package com.stackroute.MuzixAppMysql.repository;
 
-import com.stackroute.domain.Track;
+import com.stackroute.MuzixAppMysql.domain.Track;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

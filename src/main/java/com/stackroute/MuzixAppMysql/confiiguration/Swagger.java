@@ -1,5 +1,5 @@
-package com.stackroute.configuration;
-
+package com.stackroute.MuzixAppMysql.confiiguration;
+       
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -9,7 +9,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 //configuration annotation is used to identify the class as configuration
 @Configuration
-//enable swagger annotation is used to enable the swagger
+//enable swagger annotation is used to enable the swagger 
 @EnableSwagger2
 public class Swagger {
 

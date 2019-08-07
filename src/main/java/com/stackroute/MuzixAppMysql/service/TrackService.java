@@ -1,13 +1,13 @@
-package com.stackroute.service;
+package com.stackroute.MuzixAppMysql.service;
 
-import com.stackroute.domain.Track;
-import com.stackroute.exceptions.TrackAlreadyExistsException;
-import com.stackroute.exceptions.TrackNotFoundException;
-import com.stackroute.exceptions.TrackNotSavedException;
+import com.stackroute.MuzixAppMysql.domain.Track;
+import com.stackroute.MuzixAppMysql.exceptions.TrackAlreadyExistsException;
+import com.stackroute.MuzixAppMysql.exceptions.TrackNotFoundException;
+import com.stackroute.MuzixAppMysql.exceptions.TrackNotSavedException;
 
 import java.util.List;
 
-//track service interface
+//track service interface 
 //method declarations are done in this
 public interface TrackService {
 

@@ -1,8 +1,8 @@
-package com.stackroute.controllers;
+package com.stackroute.MuzixAppMysql.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stackroute.domain.Track;
-import com.stackroute.service.TrackService;
+import com.stackroute.MuzixAppMysql.domain.Track;
+import com.stackroute.MuzixAppMysql.service.TrackService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -23,21 +23,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class TrackControllerTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
     @Mock
-    private TrackService trackService;
+    TrackService trackService;
 
     @InjectMocks
-    private TrackController trackController;
-
-    private Track track;
+    TrackController trackController;
 
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(trackController).build();
-        track= new Track(1,"soch na sake","Arijit","www.testurl","unstreamed",3);
     }
 
     @Test
@@ -55,7 +52,7 @@ public class TrackControllerTest {
     @Test
     public void getAllTracks() throws Exception{
         List<Track> trackslist = new ArrayList<>();
-
+        Track track= new Track(1,"soch na sake","Arijit","www.testurl","unstreamed",3);
         trackslist.add(track);
         when(trackService.getAllTracks()).thenReturn(trackslist);
         mockMvc.perform(post("/track")
@@ -69,7 +66,7 @@ public class TrackControllerTest {
     @Test
     public void deleteTrackTest() throws Exception
     {
-        when(trackService.deleteTrack(1)).thenReturn(track);
+        when(trackService.deleteTrack(1)).thenReturn(true);
         mockMvc.perform(delete("/track/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
