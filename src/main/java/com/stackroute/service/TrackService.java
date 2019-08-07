@@ -9,7 +9,7 @@ import java.util.List;
 //declared all the methods in this interface
 public interface TrackService {
 
-    public Track saveTrack(Track track) throws TrackAlreadyExistsException;
+    public Track saveTrack(Track track) throws TrackAlreadyExistsException,TrackNotSavedException;
     public List<Track> getAllTracks();
     public Track updateTrack(Track track,int id) throws TrackAlreadyExistsException;
     public Track deleteTrack(int id)throws TrackNotFoundException;
