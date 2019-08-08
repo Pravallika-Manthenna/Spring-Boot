@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Track")
 @Data
+//lombok annotations
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -33,13 +34,4 @@ public class Track {
 
     private int listeners;
 
-    //generating setters and getters for the declared variables
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }
