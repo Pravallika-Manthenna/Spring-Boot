@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-//rest controller annotation is used which contains all the restfull operations 
+//rest controller annotation is used which contains all the restfull operations
 @RestController
 @ControllerAdvice(basePackages = "com.stackroute.muzixapp")
 public class TrackController {
@@ -32,8 +32,8 @@ public class TrackController {
         @PostMapping("track")
     public ResponseEntity<?> saveTrack(@RequestBody Track track) {
         try {
-            trackService.saveTrack(track);
-            responseEntity = new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
+            Track track1 = trackService.saveTrack(track);
+            responseEntity = new ResponseEntity<Track>(track1, HttpStatus.CREATED);
         } catch (Exception exception) {
             responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
         }
@@ -78,8 +78,8 @@ public class TrackController {
      @PutMapping("track/{id}")
     public ResponseEntity<?> updateTrack(@RequestBody Track track, @PathVariable int id) {
          try {
-             trackService.updateTrack(track, id);
-             responseEntity = new ResponseEntity<List<Track>>(trackService.getAllTracks(), HttpStatus.CREATED);
+            Track track2 = trackService.updateTrack(track, id);
+             responseEntity = new ResponseEntity<Track>(track2, HttpStatus.CREATED);
          } catch (Exception exception1) {
              responseEntity = new ResponseEntity<String>(exception1.getMessage(), HttpStatus.CONFLICT);
          }
@@ -90,8 +90,8 @@ public class TrackController {
       @DeleteMapping("track/{id}")
     public ResponseEntity<?> deleteTrack(@PathVariable int id) {
         try {
-            trackService.deleteTrack(id);
-            responseEntity = new ResponseEntity<String>("Successfully deleted", HttpStatus.OK);
+            Track deletedTrack = trackService.deleteTrack(id);
+            responseEntity = new ResponseEntity<Track>(deletedTrack, HttpStatus.OK);
         } catch (Exception exception) {
             responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
     }
