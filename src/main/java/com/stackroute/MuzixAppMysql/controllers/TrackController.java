@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 //rest controller annotation is used which contains all the restfull operations
 @RestController
@@ -23,6 +24,7 @@ public class TrackController {
 
     private ResponseEntity responseEntity;
 
+    @Autowired
     public TrackController(TrackService trackService)
     {
         this.trackService = trackService;
